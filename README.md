@@ -1,5 +1,7 @@
 RESOLVE Tutorial
 ==============
+[![Build Status](https://travis-ci.com/ClemsonRSRG/clemsonrsrg.github.io.svg?branch=master)](https://travis-ci.com/ClemsonRSRG/clemsonrsrg.github.io)
+[![License](https://img.shields.io/badge/license-BSD-blue.svg)](https://raw.githubusercontent.com/ClemsonRSRG/clemsonrsrg.github.io/master/LICENSE.txt)
 
 `Fill in description about this project!`
 
