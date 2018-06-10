@@ -14,9 +14,15 @@ rvm:
   - 2.4.1 # Latest Ruby version in TravisCI
   - 2.5.1 # Latest Ruby version
 
-install: gem install jekyll bundler html-proofer
+before_script:
+  - gem update --system
+  - gem --version
 
-script: jekyll build && htmlproofer ./_site --disable-external
+script:
+  - bundle install --no-deployment
+  - bundle update
+  - bundle exec jekyll build
+  - bundle exec htmlproofer ./_site --disable-external
 
 env:
   global:
