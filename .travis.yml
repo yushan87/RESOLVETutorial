@@ -20,6 +20,7 @@ before_script:
   - gem install html-proofer
 
 script:
+  - bundle install --no-deployment
   - bundle update
   - bundle exec jekyll build
   - bundle exec htmlproofer ./_site --disable-external
