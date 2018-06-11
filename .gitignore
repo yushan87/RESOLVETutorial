@@ -1,4 +1,42 @@
+###################
+# Temporary Files #
+###################
+
+# gedit
+*~
+
+###################
+#     Jekyll      #
+###################
+
 _site/
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
+
+###########################
+# Per-developer IDE Files #
+###########################
+
+# Netbeans
+nbactions*.xml
+
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea/
+out/
+
+######################
+# OS generated files #
+######################
+
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
