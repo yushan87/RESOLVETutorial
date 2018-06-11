@@ -19,7 +19,6 @@ before_script:
   - gem --version
 
 script:
-  - bundle update
   - bundle exec jekyll build
   - bundle exec htmlproofer ./_site --disable-external
 
