@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="532 364 736 737.5">
+  <defs>
+    <font-face font-family="Brush Script MT" font-size="600" panose-1="3 6 8 2 4 4 6 7 3 4" units-per-em="1000" underline-position="-100.09766" underline-thickness="49.80469" slope="-61.66667" x-height="360.35156" cap-height="640.1367" ascent="888.6719" descent="-337.89062" font-weight="400">
+      <font-face-src>
+        <font-face-name name="BrushScriptMT"/>
+      </font-face-src>
+    </font-face>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.7.1 
+    <dc:date>2018-03-10 20:45:03 +0000</dc:date>
+  </metadata>
+  <g id="Canvas_1" fill-opacity="1" stroke-dasharray="none" stroke="none" stroke-opacity="1" fill="none">
+    <title>Canvas 1</title>
+    <g id="Canvas_1: Layer 1">
+      <title>Layer 1</title>
+      <g id="Graphic_3">
+        <path d="M 899.4104 365.00046 L 899.4104 365 L 532 365 L 532 732.4104 L 532.00046 732.4104 C 532.00015 732.6069 532 732.8034 532 733 C 532 936.2408 696.7592 1101 900 1101 L 1267.4104 1101 L 1267.4104 754.00825 C 1267.8017 747.0553 1268 740.0508 1268 733 C 1268 529.7592 1103.2408 365 900 365 C 899.8034 365 899.6069 365.00015 899.4104 365.00046 Z" fill="#ff8c5f"/>
+      </g>
+      <g id="Graphic_4">
+        <text transform="translate(692 364.5)" fill="white">
+          <tspan font-family="Brush Script MT" font-size="600" font-weight="400" fill="white" x=".27148438" y="533">R</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,99 @@
+/* General CSS */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Leaving space for footer */
+    margin-bottom: 200px;
+    background-color: #fdfdfd !important;
+}
+
+/* Header-Related CSS */
+#page-header {
+    min-height: 80px;
+}
+
+#page-header .nav-link {
+    color: #343a40 !important;
+}
+
+#page-header .nav-link:hover {
+    color: #337ab7 !important;
+}
+
+#page-header .navbar-brand {
+    color: #343a40 !important;
+}
+
+#page-header .navbar-brand:hover {
+    color: #337ab7 !important;
+}
+
+#page-header-top {
+    background-color: #f66733 !important;
+    opacity: 0.75;
+}
+
+#site-title {
+    font-family: "Helvetica Neue";
+    font-size: 1.75rem;
+    font-weight: 200 !important;
+}
+
+/* Main Content-Related CSS */
+#page-content {
+    position: relative;
+    top: 0;
+    bottom: 200px;
+    min-height: calc(100vh - 280px);
+}
+
+/* Footer-Related CSS */
+#page-footer {
+    /* Sticky footer */
+    position: absolute;
+    bottom: 0;
+    height: 200px;
+    background-color: #999999 !important;
+    opacity: 0.9;
+    color: #fdfdfd !important;
+}
+
+#page-footer .footer-link {
+    color: #343a40 !important;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+#page-footer .footer-link:hover {
+    color: #337ab7 !important;
+}
+
+/* Utilities CSS - Publication Badges */
+
+.book-badge-color {
+    background-color: #109dc0 !important;
+    color: #fdfdfd !important;
+}
+
+.inproceedings-badge-color {
+    background-color: #109dc0 !important;
+    color: #fdfdfd !important;
+}
+
+.journal-badge-color {
+    background-color: #109dc0 !important;
+    color: #fdfdfd !important;
+}
+
+.techreport-badge-color {
+    background-color: #109dc0 !important;
+    color: #fdfdfd !important;
+}
+
+.thesis-badge-color {
+    background-color: #109dc0 !important;
+    color: #fdfdfd !important;
+}
