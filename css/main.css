@@ -37,7 +37,7 @@ body {
 }
 
 #site-title {
-    font-family: "Helvetica Neue";
+    font-family: "Helvetica Neue", sans-serif;
     font-size: 1.75rem;
     font-weight: 200 !important;
 }
@@ -56,13 +56,13 @@ body {
     position: absolute;
     bottom: 0;
     min-height: 80px;
-    background-color: #86898c !important;
     color: #fdfdfd !important;
+    background-color: #86898c !important;
 }
 
 #page-footer .footer-link {
-    color: #343a40 !important;
     font-size: 1rem;
+    color: #343a40 !important;
     text-decoration: none;
 }
 
