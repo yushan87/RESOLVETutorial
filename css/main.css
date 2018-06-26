@@ -16,6 +16,7 @@ body {
 }
 
 #page-header .nav-link {
+    font-size: 0.95rem;
     color: #343a40 !important;
 }
 
