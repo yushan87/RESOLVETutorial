@@ -1,0 +1,26 @@
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+<!-- Page Header -->
+<header id="page-header" class="d-flex flex-column border-bottom">
+    <div id="page-header-top" class="d-inline p-1"></div>
+    <nav class="navbar navbar-expand navbar-light flex-column flex-md-row" style="background-color: #fdfdfd;" role="navigation">
+        <a class="navbar-brand" href="{{ "/" | relative_url }}">
+            <img src="{{ "/images/logo2.png" | relative_url }}" width="40" height="40" alt="Clemson RSRG Logo">
+            <span id="site-title" class="pl-1 text-center align-bottom">{{ site.title | escape }}</span>
+        </a>
+        <ul class="navbar-nav flex-row ml-md-auto align-items-center text-center">
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="https://www.cs.clemson.edu/resolve/" target="_blank"><i class="fas fa-home fa-fw d-none d-sm-inline-flex" aria-hidden="true"></i><span class="d-none d-sm-inline-flex">&nbsp; </span>RSRG Home</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link text-dark" href="https://resolve.cs.clemson.edu/beginToReason/" target="_blank"><i class="fas fa-external-link-alt fa-fw d-none d-sm-inline-flex" aria-hidden="true"></i><span class="d-none d-sm-inline-flex">&nbsp; </span>BeginToReason</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link text-dark" href="https://resolve.cs.clemson.edu/" target="_blank"><i class="fas fa-external-link-alt fa-fw d-none d-sm-inline-flex" aria-hidden="true"></i><span class="d-none d-sm-inline-flex">&nbsp; </span>WebIDE</a>
+			</li>
+        </ul>
+    </nav>
+</header>
