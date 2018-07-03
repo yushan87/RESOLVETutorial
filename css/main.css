@@ -47,7 +47,30 @@ body {
     position: relative;
     top: 0;
     bottom: 80px;
-    min-height: calc(100vh - 160px);
+    height: calc(100vh - 160px);
+    overflow: hidden;
+}
+
+#lessonDropdown {
+    height: 70px;
+}
+
+#tutorialContent {
+    height: calc(100vh - 230px);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#dropdownMenuButton {
+    color: #522d80 !important;
+    border-color: #522d80 !important;
+}
+
+#dropdownMenuButton:hover,
+#dropdownMenuButton:focus,
+#dropdownMenuButton:active {
+    color: #fdfdfd !important;
+    background-color: #522d80 !important;
 }
 
 /* Footer-Related CSS */
