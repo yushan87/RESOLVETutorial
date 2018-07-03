@@ -1,0 +1,31 @@
+---
+layout: default
+---
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-7 p-0 border-right">
+            <div id="lessonDropdown" class="dropdown p-2">
+                <button id="dropdownMenuButton" class="btn btn-outline-light btn-lg px-5 dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Topic list
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <button class="dropdown-item" type="button">lesson 1</button>
+                    <button class="dropdown-item" type="button">lesson 2</button>
+                    <button class="dropdown-item" type="button">lesson 3</button>
+                </div>
+            </div>
+            <div id="tutorialContent" class="px-4">{{ content }}</div>
+        </div>
+        <div class="col-5 p-0">
+            <div class="btn-toolbar p-2 border-bottom font-weight-light" role="toolbar" aria-label="Action Toolbar">
+                <div class="btn-group mr-auto" role="group" aria-label="Compiler Buttons">
+                    <button class="btn btn-success" type="button">Verify</button>
+                </div>
+                <span class="d-none d-sm-block my-auto mr-2 text-muted">Change Font Size:</span>
+                <button id="fontIncrease" class="btn btn-sm btn-outline-primary mr-1" type="button"><i class="fas fa-plus fa-fw" aria-hidden="true" title="+"></i></button>
+                <button id="fontDecrease" class="btn btn-sm btn-outline-primary" type="button"><i class="fas fa-minus fa-fw" aria-hidden="true" title="-"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
