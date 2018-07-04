@@ -37,7 +37,7 @@ body {
 }
 
 #site-title {
-    font-family: "Helvetica Neue", sans-serif;
+    font-family: "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif;
     font-size: 1.75rem;
     font-weight: 200 !important;
 }
