@@ -20,7 +20,7 @@ before_script:
 
 script:
   - bundle exec jekyll build
-  - bundle exec htmlproofer ./_site --disable-external
+  - bundle exec htmlproofer ./_site --disable-external --assume-extension
 
 env:
   global:

@@ -1,6 +1,5 @@
 ---
-layout: tutorial
-title: Some Lesson 
+title: "Lesson 1: Some lesson name"
 ---
 
 # Lorem Ipsum

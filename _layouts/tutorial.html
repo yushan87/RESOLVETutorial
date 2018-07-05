@@ -11,9 +11,15 @@ layout: default
                         Topics list
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <button class="dropdown-item" type="button">lesson 1</button>
-                        <button class="dropdown-item" type="button">lesson 2</button>
-                        <button class="dropdown-item" type="button">lesson 3</button>
+                    {% for collection in site.collections %}
+                    {% if collection.label != "posts" %}
+                        <h6 class="dropdown-header text-capitalize text-center">{{ collection.label }}</h6>
+                        {% assign name = collection.label %}
+                        {% for item in site[name] %}
+                        <a class="dropdown-item" href="{{ item.url }}">{{ item.title }}</a>
+                        {% endfor %}
+                    {% endif %}
+                    {% endfor %}
                     </div>
                 </div>
                 <div class="tutorialButtons d-none d-sm-inline-flex">

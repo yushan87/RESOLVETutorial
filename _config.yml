@@ -17,6 +17,19 @@ markdown: kramdown
 
 encoding: utf-8
 
+collections_dir: lessons
+collections: 
+  main:
+    output: true
+    permalink: /:collection/:path
+
+defaults:
+  - scope:
+      path: ""
+      type: main
+    values:
+      layout: tutorial
+
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.

@@ -51,13 +51,19 @@ body {
     overflow: hidden;
 }
 
+/* Home Layout-Related CSS */
+#homePage {
+    height: calc(100vh - 160px);
+    overflow-y: auto;
+}
+
+/* Tutorial Layout-Related CSS */
 #tutorialToolbar {
     height: 70px;
 }
 
-#tutorialContent {
-    height: calc(100vh - 230px);
-    overflow-x: hidden;
+#tutorialToolbar .dropdown-menu {
+    max-height: 250px;
     overflow-y: auto;
 }
 
@@ -72,6 +78,12 @@ body {
 #dropdownMenuButton:active {
     color: #fdfdfd !important;
     background-color: #522d80 !important;
+}
+
+#tutorialContent {
+    height: calc(100vh - 230px);
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 /* Footer-Related CSS */
