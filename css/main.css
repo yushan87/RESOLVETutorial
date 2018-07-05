@@ -55,9 +55,8 @@ body {
     height: 70px;
 }
 
-#tutorialContent {
-    height: calc(100vh - 230px);
-    overflow-x: hidden;
+#tutorialToolbar .dropdown-menu {
+    max-height: 250px;
     overflow-y: auto;
 }
 
@@ -72,6 +71,12 @@ body {
 #dropdownMenuButton:active {
     color: #fdfdfd !important;
     background-color: #522d80 !important;
+}
+
+#tutorialContent {
+    height: calc(100vh - 230px);
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 /* Footer-Related CSS */
