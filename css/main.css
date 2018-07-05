@@ -51,7 +51,7 @@ body {
     overflow: hidden;
 }
 
-#lessonDropdown {
+#tutorialToolbar {
     height: 70px;
 }
 
@@ -62,6 +62,7 @@ body {
 }
 
 #dropdownMenuButton {
+    width: 160px;
     color: #522d80 !important;
     border-color: #522d80 !important;
 }
