@@ -1,0 +1,22 @@
+---
+layout: default
+---
+
+<div id="homePage" class="container">
+    {{ content }}
+
+    <h2>Table of Contents:</h2>
+    <ul>
+            {% for collection in site.collections %}
+            {% if collection.label != "posts" %}
+                <li><h4 class="text-capitalize">{{ collection.label }}</h4></li>
+                {% assign name = collection.label %}
+                <ul>
+                {% for item in site[name] %}
+                <li><a class="" href="{{ item.url }}">{{ item.title }}</a></li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {% endfor %}  
+    </ul>
+</div>
