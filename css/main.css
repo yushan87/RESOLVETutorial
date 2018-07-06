@@ -10,13 +10,6 @@ body {
     background-color: #fdfdfd !important;
 }
 
-@media (max-width: 767.98px) {
-    /* More space for footer in small screens */
-    body {
-        margin-bottom: 160px;
-    }
-}
-
 /* Header-Related CSS */
 #page-header {
     min-height: 80px;
@@ -49,96 +42,14 @@ body {
     font-weight: 200 !important;
 }
 
-/* Home Layout-Related CSS */
-#default-page-content {
-    position: relative;
-    top: 0;
-    bottom: 80px;
-    min-height: calc(100vh - 160px);
-}
-
-@media (max-width: 767.98px) {
-    /* More space for footer in small screens */
-    #default-page-content {
-        bottom: 160px;
-        min-height: calc(100vh - 240px);
-    }
-}
-
-#default-page-content a {
-    text-decoration: none;
-}
-
-/* Tutorial Layout-Related CSS */
-#page-content {
-    position: relative;
-    top: 0;
-    bottom: 80px;
-    height: calc(100vh - 160px);
-    overflow: hidden;
-}
-
-@media (max-width: 767.98px) {
-    /* More space for footer in small screens */
-    #page-content {
-        bottom: 160px;
-        min-height: calc(100vh - 240px);
-    }
-}
-
-#tutorialToolbar {
-    height: 70px;
-}
-
-#tutorialToolbar .dropdown-menu {
-    max-height: 250px;
-    overflow-y: auto;
-}
-
-#dropdownMenuButton {
-    width: 160px;
-    color: #522d80 !important;
-    border-color: #522d80 !important;
-}
-
-#dropdownMenuButton:hover,
-#dropdownMenuButton:focus,
-#dropdownMenuButton:active {
-    color: #fdfdfd !important;
-    background-color: #522d80 !important;
-}
-
-@media (max-width: 575.98px) {
-    #dropdownMenuButton {
-        width: 130px;
-    }
-}
-
-#tutorialContent {
-    height: calc(100vh - 230px);
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
-#tutorialContent a {
-    text-decoration: none;
-}
-
 /* Footer-Related CSS */
 #page-footer {
     /* Sticky footer */
     position: absolute;
     bottom: 0;
-    min-height: 80px;
+    height: 80px;
     color: #fdfdfd !important;
     background-color: #86898c !important;
-}
-
-@media (max-width: 767.98px) {
-    /* More space for footer in small screens */
-    #page-footer {
-        min-height: 160px;
-    }
 }
 
 #page-footer .footer-link {

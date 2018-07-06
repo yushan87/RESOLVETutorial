@@ -29,16 +29,7 @@ layout: default
             <div id="tutorialContent" class="px-4">{{ content }}</div>
         </div>
         <div class="col-6 p-0">
-            <div class="btn-toolbar p-2 border-bottom font-weight-light" role="toolbar" aria-label="Action Toolbar">
-                <div id="compilerButtons" class="mr-auto">
-                    <button class="btn btn-success" type="button">Verify</button>
-                </div>
-                <div id="fontButtons" class="d-inline-flex">
-                    <span class="d-none d-md-block my-auto mr-2 text-muted">Change Font Size:</span>
-                    <button id="fontIncrease" class="btn btn-sm btn-outline-primary mr-1" type="button"><i class="fas fa-plus fa-fw" aria-hidden="true" title="+"></i></button>
-                    <button id="fontDecrease" class="btn btn-sm btn-outline-primary" type="button"><i class="fas fa-minus fa-fw" aria-hidden="true" title="-"></i></button>
-                </div>
-            </div>
+            {% include ace_editor.html %}
         </div>
     </div>
 </div>

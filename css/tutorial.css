@@ -1,0 +1,50 @@
+/* Tutorial Layout-Related CSS */
+#page-content {
+    position: relative;
+    top: 0;
+    bottom: 80px;
+    height: calc(100vh - 160px);
+    overflow: hidden;
+}
+
+#tutorialToolbar {
+    height: 70px;
+}
+
+#tutorialToolbar .dropdown-menu {
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+#dropdownMenuButton {
+    width: 160px;
+    color: #522d80 !important;
+    border-color: #522d80 !important;
+}
+
+#dropdownMenuButton:hover,
+#dropdownMenuButton:focus,
+#dropdownMenuButton:active {
+    color: #fdfdfd !important;
+    background-color: #522d80 !important;
+}
+
+@media (max-width: 575.98px) {
+    #dropdownMenuButton {
+        width: 130px;
+    }
+}
+
+#tutorialContent {
+    height: calc(100vh - 230px);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#tutorialContent a {
+    text-decoration: none;
+}
+
+#editorCard {
+    height: calc(100vh - 160px);
+}
