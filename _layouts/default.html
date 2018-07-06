@@ -5,7 +5,7 @@
         {% include body_header.html %}
 
         <!-- Page Content -->
-        <main id="page-content" role="main">
+        <main id={% if page.layout != "tutorial" %}"default-page-content"{% else %}"page-content"{% endif %} role="main">
             {{ content }}
         </main>
 
