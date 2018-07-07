@@ -7,8 +7,8 @@
     overflow: hidden;
 }
 
-#tutorialToolbar {
-    height: 70px;
+#tutorialCard {
+    height: calc(100vh - 160px);
 }
 
 #tutorialToolbar .dropdown-menu {
@@ -36,7 +36,6 @@
 }
 
 #tutorialContent {
-    height: calc(100vh - 230px);
     overflow-x: hidden;
     overflow-y: auto;
 }

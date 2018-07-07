@@ -5,28 +5,7 @@ layout: default
 <div class="container-fluid">
     <div class="row">
         <div class="col-6 p-0 border-right">
-            <div id="tutorialToolbar" class="d-flex flex-column flex-sm-row p-3 align-items-md-center">
-                <div class="dropdown mr-2">
-                    <button id="dropdownMenuButton" class="btn btn-outline-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Topics list
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    {% for collection in site.collections %}
-                    {% if collection.label != "posts" %}
-                        <h6 class="dropdown-header text-capitalize text-center">{{ collection.label }}</h6>
-                        {% assign name = collection.label %}
-                        {% for item in site[name] %}
-                        <a class="dropdown-item" href="{{ item.url }}">{{ item.title }}</a>
-                        {% endfor %}
-                    {% endif %}
-                    {% endfor %}
-                    </div>
-                </div>
-                <div class="tutorialButtons d-none d-sm-inline-flex">
-                    <button class="btn btn-outline-secondary" type="button"><i class="far fa-file-pdf fa-fw" aria-hidden="true" title="PDF"></i></button>
-                </div>
-            </div>
-            <div id="tutorialContent" class="px-4">{{ content }}</div>
+            {% include tutorial_content.html %}
         </div>
         <div class="col-6 p-0">
             {% include ace_editor.html %}
