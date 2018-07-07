@@ -5,40 +5,10 @@ layout: default
 <div class="container-fluid">
     <div class="row">
         <div class="col-6 p-0 border-right">
-            <div id="tutorialToolbar" class="d-flex flex-column flex-sm-row p-3 align-items-md-center">
-                <div class="dropdown mr-2">
-                    <button id="dropdownMenuButton" class="btn btn-outline-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Topics list
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    {% for collection in site.collections %}
-                    {% if collection.label != "posts" %}
-                        <h6 class="dropdown-header text-capitalize text-center">{{ collection.label }}</h6>
-                        {% assign name = collection.label %}
-                        {% for item in site[name] %}
-                        <a class="dropdown-item" href="{{ item.url }}">{{ item.title }}</a>
-                        {% endfor %}
-                    {% endif %}
-                    {% endfor %}
-                    </div>
-                </div>
-                <div class="tutorialButtons d-none d-sm-inline-flex">
-                    <button class="btn btn-outline-secondary" type="button"><i class="far fa-file-pdf fa-fw" aria-hidden="true" title="PDF"></i></button>
-                </div>
-            </div>
-            <div id="tutorialContent" class="px-4">{{ content }}</div>
+            {% include tutorial_content.html %}
         </div>
         <div class="col-6 p-0">
-            <div class="btn-toolbar p-2 border-bottom font-weight-light" role="toolbar" aria-label="Action Toolbar">
-                <div id="compilerButtons" class="mr-auto">
-                    <button class="btn btn-success" type="button">Verify</button>
-                </div>
-                <div id="fontButtons" class="d-inline-flex">
-                    <span class="d-none d-md-block my-auto mr-2 text-muted">Change Font Size:</span>
-                    <button id="fontIncrease" class="btn btn-sm btn-outline-primary mr-1" type="button"><i class="fas fa-plus fa-fw" aria-hidden="true" title="+"></i></button>
-                    <button id="fontDecrease" class="btn btn-sm btn-outline-primary" type="button"><i class="fas fa-minus fa-fw" aria-hidden="true" title="-"></i></button>
-                </div>
-            </div>
+            {% include ace_editor.html %}
         </div>
     </div>
 </div>

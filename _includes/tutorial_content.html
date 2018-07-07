@@ -1,0 +1,24 @@
+<div id="tutorialCard" class="card">
+    <div id="tutorialToolbar" class="card-header d-flex flex-column flex-sm-row align-items-md-center" style="background-color: inherit;">
+        <div class="dropdown mr-2">
+            <button id="dropdownMenuButton" class="btn btn-outline-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Topics list
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            {% for collection in site.collections %}
+            {% if collection.label != "posts" %}
+                <h6 class="dropdown-header text-capitalize text-center">{{ collection.label }}</h6>
+                {% assign name = collection.label %}
+                {% for item in site[name] %}
+                <a class="dropdown-item" href="{{ item.url }}">{{ item.title }}</a>
+                {% endfor %}
+            {% endif %}
+            {% endfor %}
+            </div>
+        </div>
+        <div class="tutorialButtons d-none d-sm-inline-flex">
+            <button class="btn btn-outline-secondary" type="button"><i class="far fa-file-pdf fa-fw" aria-hidden="true" title="PDF"></i></button>
+        </div>
+    </div>
+    <div id="tutorialContent" class="card-body py-0">{{ content }}</div>
+</div>
