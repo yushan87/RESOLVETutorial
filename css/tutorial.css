@@ -43,7 +43,3 @@
 #tutorialContent a {
     text-decoration: none;
 }
-
-#editorCard {
-    height: calc(100vh - 160px);
-}
