@@ -1,15 +1,68 @@
 ---
-title: "Lesson 1: Some lesson name"
+title: "Lesson 1: Hello RESOLVE"
 ---
 
-# Lorem Ipsum
+## Lesson 1 Hello RESOLVE !
+### 1.1 Background
+RESOLVE is a unique integrated programming environment that includes programming language (also called RESOLVE), built-in specification language, compiler, verifier, and prover. The programming language itself is an object-based language, with clean semantics and simple syntax which are easy to learn. You will write a program in RESOLVE, then compile it, which in fact simply translates it into Java code. The Java code is then compiled using a regular Java compiler and the files are executed the same way any Java class files are.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mollis ornare mauris, quis molestie tortor rutrum nec. Donec in aliquam ante, in tempor nunc. Morbi eget interdum augue. Pellentesque nunc nibh, porta sed est sed, aliquet mattis massa. Maecenas non ligula quis mauris molestie aliquet. Aenean nec pulvinar ipsum. Proin sed urna malesuada, porttitor mi ac, maximus ante. Integer ac purus in est sodales tempus. Proin vulputate purus metus. Aenean posuere felis sed lacus ultricies, nec gravida ligula ullamcorper.
+A very interesting and indispensable feature of RESOLVE is the built-in specification language that uses the universal language of mathematical notation. Other modern programming languages can also be specified using specification languages available today, (for example Java and JSP, C# and Spec#), but unlike most of them, RESOLVE is fully specified using its native specification language. And the fact that it uses the language of mathematical notation makes it less ambiguous to write and understand these specifications. The verifier is also an important component of the RESOLVE environment, as fully verified code significantly improves software reliability. The Software Engineering industry is very interested in software verification, but as of today RESOLVE is the only such environment. The verifier and prover are still under development, and a lot of work is still being done by researchers. If you decide you would like to contribute, there is always space for improvement.
 
-Ut sollicitudin tempor tortor vitae condimentum. Ut efficitur velit arcu, et sodales nibh semper eu. Suspendisse scelerisque ligula massa, eget blandit orci rutrum eu. Nunc dignissim neque at mi finibus tristique. Mauris sit amet rhoncus nulla. Cras leo erat, sagittis quis tristique vitae, dapibus ornare leo. Vivamus bibendum elit sed erat semper, eget maximus felis iaculis. Nam quis elit luctus, suscipit arcu tristique, euismod odio. Pellentesque porta elit massa, a volutpat ante gravida vel. Maecenas iaculis est mi, sed tincidunt nibh rhoncus et.
+## 1.2 A Simple Program in RESOLVE
+Like many other books using the cliché program that prints out “Hello World!”, the simple program below prints the “Hello RESOLVE!” statement.
+~~~~~~~~
+Facility Hello_Resolve;
+ uses Std_Char_Str_Fac;
+ Operation Main();
+    Procedure
+       Var hello:    Char_Str;
+       Var resolve:  Char_Str;
+       hello   := “Hello”;
+       resolve := “RESOLVE”;
+       -- print "Hello RESOLVE" using two character strings
+       Write(hello);
+       Write(“  “);
+       Write_Line(resolve);
+end Main;
+end Hello_Resolve;
+~~~~~~~~
 
-Morbi sit amet orci quam. In vitae metus auctor, interdum lorem eu, scelerisque nisi. Nullam imperdiet pulvinar dui, nec sagittis diam bibendum sed. Aenean dictum commodo enim nec auctor. Morbi molestie massa vitae diam maximus, nec mattis ligula hendrerit. Sed eget nibh ut nisi consequat fringilla. Pellentesque ut purus bibendum, cursus nisl eget, posuere sem. Pellentesque mollis accumsan quam in tempor. Nam ullamcorper malesuada mi. Fusce pulvinar accumsan lorem eu mollis.
+When we run the program the output will look like this:
+Hello RESOLVE!
 
-Donec porttitor laoreet erat, et finibus diam aliquet ac. Etiam a congue magna. Pellentesque id iaculis tellus. In non ipsum id eros commodo fringilla. Mauris a pellentesque turpis, quis blandit augue. Mauris in quam malesuada, vulputate elit eget, suscipit massa. Vivamus tincidunt risus vestibulum tempor varius. Pellentesque ante lorem, accumsan non neque quis, commodo condimentum metus. Etiam libero mauris, molestie nec nibh at, malesuada consectetur enim. Fusce gravida est quis justo tincidunt iaculis. Nam tempus dapibus odio, a varius ex iaculis quis. Vivamus sem ligula, porta non ultricies eu, molestie vel erat. Ut ac tortor rutrum, malesuada ex vel, efficitur ligula. Integer ut odio sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget eros condimentum, laoreet elit id, hendrerit lectus.
+## 1.3 RESOLVE Program structure
+### 1.3.1 Facility
+Line 1 declares a facility. This is similar to Java, where every file is in fact a class. And like Java, the facility's name should be the same as the name of the file that declares it. The file extension is “.fa”, indicates this is a facility. There are several other types of files in RESOLVE that will be discussed later, but for now you just have to remember to add “.fa” to your facility file name. So, if you created a facility called “Hello_Resolve”, then your file name should be named Hello_Resolve.fa. The underlying reason for this similarity to Java is that RESOLVE code gets translated to Java, and Java requires that the file name matches the class name. To end the facility, you simply need an end Hello_Resolve; statement, as shown in line 14. And, needless to say, all statements end with a semicolon, like so many other programming languages.
 
-Suspendisse potenti. Aenean placerat, lectus pharetra tincidunt feugiat, nibh nunc pulvinar augue, sed laoreet felis felis a dui. Donec laoreet non ex at varius. Pellentesque ac pulvinar eros. Quisque condimentum lectus eu neque tempor malesuada. Praesent in fermentum nibh, et vestibulum nisi. Sed at molestie sem. Praesent condimentum consectetur sollicitudin. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam tincidunt sodales volutpat. Nam venenatis elit est, ac ullamcorper quam venenatis dignissim. Pellentesque auctor tristique mauris, vitae vehicula neque pellentesque id.
+### 1.3.2 File Inclusions
+Line 2 of the program states that the program uses Std_Char_Str_Fac, which is the built-in facility that allows RESOLVE to handle a specific data type, a character string in this case. This facility contains the Char_Str (character string) definition and operations that you can perform on the strings. This is somewhat similar to other programming languages where you have to include header files. You will see more of this later.
+
+### 1.3.3 Operation Main
+Line 3 declares Operation Main. This is the main program that does all the work for you. Line 13 contains the statement indicating the end of Main. Operation Main has a procedure that contains variable declarations and statements. The procedure does not need a closing end statement. The procedure declares several variables of type Char_Str – character string. The syntax for variable declaration is simple:
+~~~~~~~~
+Var varname: Vartype;
+~~~~~~~~
+You can either declare one variable per line as we did in this example, or several at once, and you can use keyword “Variable”, or its abbreviated form “Var” as in the example below :
+~~~~~~~~
+Var One, Two: Char_Str;
+Variable temp, temp2: Integer;
+~~~~~~~~
+Lines 7 and 8 initialize two variables of type character string. As in Java, RESOLVE strings use double quotes.
+
+### 1.3.4 Assignment Symbol
+An assignment symbol in RESOLVE is a colon followed by an equal sign := . An equal sign alone, as in mathematics, symbolizes equality, not assignment in RESOLVE. You saw the assignment operator on lines 7 and 8 where character variables are initialized. Similarly, if you saw my_int := 5; this is an initialization, and if you see my_int = 5; this is a check for equality. Unlike in C, C++, or Java double equal sign “==” does not exist in RESOLVE.
+
+### 1.3.5 Comments
+Line 9 of the program is a comment, as indicated by a double dashed (- -) line. This is a single line comment. If you have several lines of comments you can do one of the two things: either make several lines of single-line comments, or use a multi-line comment. A multi-line comment starts with (* and ends with *) . The two ways are illustrated below:
+~~~~~~~~
+-- This is one way to write a very long comment
+-- that spans several lines
+~~~~~~~~
+~~~~~~~~
+(* Or you can use this multi-line comment which is
+    similar to the C-style comment and can span
+    several lines   *)
+~~~~~~~~
+
+### 1.3.6 Printing Output
+RESOLVE has two operations for printing output to the standard output stream: Write(..), and Write_Line(..). The only difference is that the second one also prints a newline character. You will see more of this later, but every simple built-in type in RESOLVE (integers, booleans, characters, and character strings ) has these operations. It is important to remember that these operations expect either a literal or a variable of the correct type as a parameter. If you leave the parenthesis empty the compiler will generate an error.

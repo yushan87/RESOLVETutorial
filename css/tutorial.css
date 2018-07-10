@@ -7,7 +7,7 @@
     overflow: hidden;
 }
 
-#tutorialCard {
+#tutorialCol {
     height: calc(100vh - 160px);
 }
 
@@ -42,8 +42,4 @@
 
 #tutorialContent a {
     text-decoration: none;
-}
-
-#editorCard {
-    height: calc(100vh - 160px);
 }

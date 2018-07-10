@@ -1,10 +1,10 @@
-<div id="editorCard" class="card">
-    <div class="card-body p-0">
-        <!-- Ace Editor -->
-        <div id="code" class="h-100"></div>
+<div id="editorCol" class="d-flex flex-column h-100">
+    <!-- Ace Editor -->
+    <div id="code" class="flex-grow-1 p-0">
     </div>
-    <div class="card-footer bg-dark text-white">
-        <div class="btn-toolbar font-weight-light" role="toolbar" aria-label="Action Toolbar">
+    <!-- Editor Toolbar -->
+    <div id="editorToolbar" class="p-2 bg-dark text-white">
+        <div class="btn-toolbar font-weight-light" role="toolbar" aria-label="Editor Toolbar">
             <div id="compilerButtons" class="mr-auto">
                 <button class="btn btn-success" type="button">Verify</button>
             </div>
