@@ -6,7 +6,7 @@
     <div id="editorToolbar" class="p-2 bg-dark text-white">
         <div class="btn-toolbar font-weight-light" role="toolbar" aria-label="Editor Toolbar">
             <div id="compilerButtons" class="mr-auto">
-                <button class="btn btn-success" type="button">Verify</button>
+                <button class="btn btn-success" type="button">Analyze</button>
             </div>
             <div id="fontButtons" class="d-inline-flex">
                 <span class="d-none d-md-block my-auto mr-2">Change Font Size:</span>
@@ -18,12 +18,17 @@
 </div>
 
 <!-- AceEditor Rendering JavaScript -->
+<script src="{{ "/javascript/ace/mode-resolve.js" | relative_url }}" type="text/javascript" charset="utf-8"></script>
+<script src="{{ "/javascript/ace/editorUpdate.js" | relative_url }}" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
+    var editor;
     $( window ).on( "load", function() {
-        var editor = ace.edit("code");
+        var ResolveMode = ace.require("ace/mode/resolve").Mode;
+
+        editor = ace.edit("code");
         editor.setTheme("ace/theme/tomorrow_night");
-        editor.session.setMode("ace/mode/javascript");
-        editor.session.setValue("function myScript() {\n\treturn 100;\n}");
+        editor.session.setMode(new ResolveMode());
+        editor.session.setValue("");
         editor.setFontSize(16);
     });
     
@@ -44,4 +49,12 @@
         
         return false;
     });
+
+    function load_lesson(code) {
+        if (typeof editor !== 'undefined') {
+            editor.session.setValue(code);
+        } else {
+            console.log("AceEditor not initialized!");
+        }
+    }
 </script>
