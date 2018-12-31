@@ -2,7 +2,6 @@
 # Continuous integration settings for Travis CI
 #
 dist: trusty
-sudo: false
 branches:
   only:
     - master
@@ -12,7 +11,7 @@ branches:
 language: ruby
 rvm:
   - 2.4.1 # Latest Ruby version in TravisCI
-  - 2.5.1 # Latest Ruby version
+  - 2.5.3 # Latest Ruby version
 
 before_script:
   - gem update --system
