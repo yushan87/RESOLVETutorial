@@ -1,7 +1,7 @@
 #
 # Continuous integration settings for Travis CI
 #
-dist: trusty
+dist: xenial
 branches:
   only:
     - master
@@ -10,7 +10,7 @@ branches:
 # See: https://jekyllrb.com/docs/continuous-integration/travis-ci/ for more information.
 language: ruby
 rvm:
-  - 2.4.1 # Latest Ruby version in TravisCI
+  - 2.5.3 # Latest Ruby version in TravisCI
   - 2.6.4 # Latest Ruby version
 
 before_script:
