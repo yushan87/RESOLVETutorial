@@ -16,6 +16,8 @@ rvm:
 before_script:
   - gem update --system
   - gem --version
+  - gem install bundler:2.0.2
+  - bundle update --bundler
 
 script:
   - bundle exec jekyll build
