@@ -12,7 +12,7 @@
                     <h6 class="dropdown-header text-capitalize text-center">{{ collection.label }}</h6>
                     {% assign name = collection.label %}
                     {% for item in site[name] %}
-                    <a class="dropdown-item" href="{{ item.url }}">{{ item.title }}</a>
+                    <a class="dropdown-item" href="{{ item.url | relative_url }}">{{ item.title }}</a>
                     {% endfor %}
                 {% endif %}
                 {% endfor %}

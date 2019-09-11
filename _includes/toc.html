@@ -6,7 +6,7 @@
     {% assign name = collection.label %}
     <ul>
         {% for item in site[name] %}
-        <li><a class="" href="{{ item.url }}">{{ item.title }}</a></li>
+        <li><a class="" href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
         {% endfor %}
     </ul>
     {% endif %}
