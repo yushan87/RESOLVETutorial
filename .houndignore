@@ -1,2 +1,2 @@
 javascript/resolve/ResolveParserListener.js
-javascript/antlr4/*
+javascript/antlr4/**
