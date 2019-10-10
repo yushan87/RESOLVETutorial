@@ -23,8 +23,9 @@
     $( window ).on( "load", function() {
         var editor = ace.edit("code");
         editor.setTheme("ace/theme/tomorrow_night");
-        editor.session.setMode("ace/mode/javascript");
-        editor.session.setValue("function myScript() {\n\treturn 100;\n}");
+        //editor.session.setMode("ace/mode/javascript");
+        editor.session.setMode("ace/mode/java");
+        editor.session.setValue("public class Test {\n\n\tpublic static void main(String args[]) {\n\t\tSystem.out.println(\"Hello World!\");\n\t}\n\n}");
         editor.setFontSize(16);
     });
     
