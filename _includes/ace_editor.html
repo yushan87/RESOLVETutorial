@@ -1,12 +1,14 @@
 <div id="editorCol" class="d-flex flex-column h-100">
     <!-- Ace Editor -->
-    <div id="code" class="flex-grow-1 p-0">
+    <div id="editor" class="flex-grow-1 p-0">
     </div>
+    <!-- Check Syntax Results -->
+    <div id="compilerResult"></div>
     <!-- Editor Toolbar -->
     <div id="editorToolbar" class="p-2 bg-dark text-white">
         <div class="btn-toolbar font-weight-light" role="toolbar" aria-label="Editor Toolbar">
             <div id="compilerButtons" class="mr-auto">
-                <button id="checkSyntax" class="btn btn-success" type="button" disabled>Check Syntax</button>
+                <button id="checkSyntax" class="btn btn-success" type="button">Check Syntax</button>
                 <button id="resetCode" class="btn btn-danger" type="button">Reset</button>
             </div>
             <div id="fontButtons" class="d-inline-flex">
@@ -17,48 +19,3 @@
         </div>
     </div>
 </div>
-
-<!-- AceEditor Rendering JavaScript -->
-<script type="text/javascript">
-    // Variables
-    var editor;
-    var editorContent = "";
-
-    $( window ).on( "load", function() {
-        editor = ace.edit("code");
-        editor.setTheme("ace/theme/tomorrow_night");
-        //editor.session.setMode("ace/mode/javascript");
-        editor.session.setMode("ace/mode/java");
-
-        // Store the content for future use
-        editorContent = "public class Test {\n\n\tpublic static void main(String args[]) {\n\t\tSystem.out.println(\"Hello World!\");\n\t}\n\n}";
-        editor.session.setValue(editorContent);
-
-        editor.setFontSize(16);
-    });
-
-    $( "#resetCode" ).click(function() {
-        // Put the cached content into the editor
-        editor.session.setValue(editorContent);
-        
-        return false;
-    });
-    
-    $( "#fontIncrease" ).click(function() {
-        // Increase font size
-        var currentFontSize = $( "#code" ).css("font-size");
-        currentFontSize = parseFloat(currentFontSize) * 1.2;
-        $( "#code" ).css("font-size", currentFontSize);
-        
-        return false;
-    });
-    
-    $( "#fontDecrease" ).click(function() {
-        // Decrease font size
-        var currentFontSize = $( "#code" ).css("font-size");
-        currentFontSize = parseFloat(currentFontSize) / 1.2;
-        $( "#code" ).css("font-size", currentFontSize);
-        
-        return false;
-    });
-</script>
