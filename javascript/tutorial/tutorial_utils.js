@@ -38,6 +38,58 @@ function createEditor() {
 // Editor Alert-Related Functions //
 ////////////////////////////////////
 
+/*
+ * Function for clearing all content in compiler result div.
+ */
+function clearAlertBox() {
+    // Delete compiler result content
+    $("#compilerResult").empty();
+}
+
+/*
+ * Function for creating the proper HTML for rendering an
+ * alert box.
+ */
+function createAlertBox(hasError, message) {
+    // New HTML Object #1: Alert Box
+    var alertDiv = document.createElement("div");
+    alertDiv.setAttribute("id", "resultAlertBox");
+
+    // Change alert box color depending if it has error
+    if (hasError) {
+        alertDiv.setAttribute("class", "alert alert-danger alert-dismissible mb-0 fade show");
+    }
+    else {
+        alertDiv.setAttribute("class", "alert alert-success alert-dismissible mb-0 fade show");
+    }
+
+    // Set other attributes
+    alertDiv.setAttribute("role", "alert");
+    alertDiv.setAttribute("aria-hidden", "true");
+
+    // New HTML Object #2: Close Button
+    var closeButton = document.createElement("button");
+    closeButton.setAttribute("type", "button");
+    closeButton.setAttribute("class", "close");
+    closeButton.setAttribute("data-dismiss", "alert");
+    closeButton.setAttribute("aria-label", "Close");
+
+    // New HTML Object #3: Close Icon
+    var closeIconSpan = document.createElement("span");
+    closeIconSpan.setAttribute("aria-hidden", "true");
+    closeIconSpan.innerHTML = "&times;";
+
+    // Add close icon to close button
+    closeButton.appendChild(closeIconSpan);
+
+    // Add message and the close button to the alert box
+    alertDiv.appendChild(document.createTextNode(message));
+    alertDiv.appendChild(closeButton);
+
+    // Add the alert box to the div
+    $("#compilerResult").append(alertDiv);
+}
+
 ///////////////////////////////
 // Toolbar-Related Functions //
 ///////////////////////////////
@@ -46,19 +98,28 @@ function createEditor() {
  * Function for checking syntax on the current editor contents.
  */
 $("#checkSyntax").click(function() {
+    // Lock editor to stop user from making changes
+    lock();
+
     // TODO: Invoke Lexer/Parser for Language
-    var hasError = false;
+    var hasError = true;
     var msg;
 
     // Populate lexer/parser error messages (if any)
-    if (hasError == true) {
+    if (hasError) {
         // TODO: Display error message(s)
         msg = "Syntax Checker Results Go Here!";
     }
     else {
         msg = "No syntax errors!";
     }
+
+    // Create the appropriate alert box
+    createAlertBox(hasError, msg);
     
+    // Unlock editor for further user edits
+    unlock();
+
     return false;
 });
 
@@ -101,7 +162,7 @@ $("#fontDecrease").click(function() {
  */
 function lock() {
     // Make sure we don't have any leftover alert box from the previous run.
-    clearAlerts();
+    clearAlertBox();
 
     // Lock the editors
     aceEditor.setReadOnly(true);
