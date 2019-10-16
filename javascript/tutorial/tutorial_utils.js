@@ -35,6 +35,48 @@ function createEditor() {
 }
 
 ////////////////////////////////////
+// ANTLR4-Related Functions //
+////////////////////////////////////
+
+/*
+ * Function for setting up the ANTLR4 lexer and parser.
+ *
+function parseGrammar(inputText) {
+    // load nodejs compatible require
+    var ace_require = require;
+    require = undefined;
+    var Honey = { 'requirePath': ['/javascript/'] }; // walk up to js folder, see Honey docs
+    //importScripts("../lib/require.js");
+    var antlr4_require = require;
+    require = ace_require;
+
+    // Load ANTLR4 dependencies
+    var annotations = [];
+    try {
+        require = antlr4_require;
+        var antlr4 = require("antlr4/index");
+        var JavaLexer = require("./Java8Lexer").Java8Lexer;
+        var JavaParser = require("./Java8Parser").Java8Parser;
+
+        // Code to invoke the lexer/parser
+        var chars = new antlr4.InputStream(inputText);
+        var lexer = new JavaLexer(chars);
+        var tokens = new antlr4.CommonTokenStream(lexer);
+        var parser = new JavaParser(tokens);
+    
+        parser.buildParseTrees = true;
+        parser.removeErrorListeners();
+        parser.addErrorListener(new AnnotatingErrorListener(annotations));
+        parser.compilationUnit();
+    }
+    finally {
+        require = ace_require;
+    }
+
+    return annotations;
+}*/
+
+////////////////////////////////////
 // Editor Alert-Related Functions //
 ////////////////////////////////////
 
@@ -104,6 +146,7 @@ $("#checkSyntax").click(function() {
     // TODO: Invoke Lexer/Parser for Language
     var hasError = true;
     var msg;
+    //var validate = parseGrammar(editorContent);
 
     // Populate lexer/parser error messages (if any)
     if (hasError) {
