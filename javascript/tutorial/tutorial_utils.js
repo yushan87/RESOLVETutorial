@@ -151,7 +151,7 @@ $("#checkSyntax").click(function() {
     // Populate lexer/parser error messages (if any)
     if (hasError) {
         // TODO: Display error message(s)
-        msg = "Syntax Checker Results Go Here!";
+        msg = "There are <num> errors. Please hover over each of the <icons> above for more information.";
     }
     else {
         msg = "No syntax errors!";
