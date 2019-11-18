@@ -43,3 +43,15 @@
 #tutorialContent a {
     text-decoration: none;
 }
+
+/* ACE Editor-Related CSS */
+.ace_folding-enabled > .ace_gutter-cell {
+    padding-right: 10px;
+    padding-left: 30px;
+}
+
+
+.tooltip > .tooltip-inner {
+    background-color: lightgray; 
+    color: #000; 
+}
