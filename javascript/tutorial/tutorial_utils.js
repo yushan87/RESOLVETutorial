@@ -7,6 +7,8 @@
 var aceEditor; // This is the ACE Editor embedded to the page.
 var editorContent = ""; // Content to be displayed in ACE Editor
 var syntaxChecking = false; // A flag that indicates whether or not the check syntax button has been clicked.
+var lineErrorMap; // This contains error information for each line in the current file.
+var fontSize; // The current font size
 
 ///////////////////////////////////////
 // Main ACE Editor-Related Functions //
@@ -17,21 +19,80 @@ var syntaxChecking = false; // A flag that indicates whether or not the check sy
  */
 function createEditor() {
     // RESOLVE mode
-    //ResolveMode = ace.require("ace/mode/resolve").Mode;
-    //Range = ace.require("ace/range").Range;
+    ResolveMode = ace.require("ace/mode/resolve").Mode;
 
     // Basic editor settings
     aceEditor = ace.edit("editor");
     aceEditor.setTheme("ace/theme/tomorrow_night");
-    aceEditor.setFontSize(16);
+    fontSize = 16;
+    aceEditor.setFontSize(fontSize);
 
     // Store the content for future use
-    editorContent = "public class Test {\n\n\tpublic static void main(String args[]) {\n\t\tSystem.out.println(\"Hello World!\");\n\t}\n\n}";
+    editorContent = "Facility Hello_Resolve;\n\td\nend Hello_Resolve;"
     aceEditor.session.setValue(editorContent);
 
     // Set this to RESOLVE mode
-    //aceEditor.getSession().setMode(new ResolveMode());
-    aceEditor.session.setMode("ace/mode/java");
+    aceEditor.getSession().setMode(new ResolveMode());
+
+    // Disable ACE Editor's breakpoint toggling.
+    aceEditor.on("guttermousedown", disableBreakpoint);
+
+    // Add tooltip that indicates you can click on VC icon.
+    aceEditor.on("guttermousemove", showGutterTooltip);
+}
+
+////////////////////////////////////
+// Functions Passed to ACE Editor //
+////////////////////////////////////
+
+/*
+ * Function for clearing the error icons on the gutter.
+ */
+function clearErrorGutterIcons() {
+    lineErrorMap = null;
+
+    // Remove all error icons
+    var totalLines = aceEditor.getSession().getLength();
+    for (var i = 0; i < totalLines; i++) {
+        aceEditor.getSession().removeGutterDecoration(i, "ace_error");
+    }
+}
+
+/*
+ * Function for disabling ACE editor breakpoint toggling.
+ */
+function disableBreakpoint(e) {
+    var region = e.editor.renderer.$gutterLayer.getRegion(e);
+    if (region == "markers") {
+        e.stop(); // prevent breakpoint toggling
+    }
+}
+
+/*
+ * Function for showing tooltip on an error icon.
+ */
+function showGutterTooltip(e) {
+    var region = e.editor.renderer.$gutterLayer.getRegion(e);
+    var target = e.domEvent.target;
+    if (region == "markers") {
+        e.stop();
+
+        // Only do this if the gutter has the "ace_error" class
+        //var msg = lineErrorMap.get(e)
+        if ($(target).hasClass("ace_error")) {
+            var errorObj = lineErrorMap.get(Number($(target).text()) - 1);
+            // Create a tooltip that show that you can click on it.
+            $(target).tooltip({
+                placement: "bottom",
+                template: "<div class=\"tooltip\" role=\"tooltip\"><div class=\"tooltip-inner\"></div></div>",
+                title: errorObj[0].text
+            });
+            $(target).tooltip("show");
+        }
+        else {
+            $(target).tooltip("dispose");
+        }
+    }
 }
 
 ////////////////////////////////////
@@ -40,41 +101,22 @@ function createEditor() {
 
 /*
  * Function for setting up the ANTLR4 lexer and parser.
- *
+ */
 function parseGrammar(inputText) {
-    // load nodejs compatible require
-    var ace_require = require;
-    require = undefined;
-    var Honey = { 'requirePath': ['/javascript/'] }; // walk up to js folder, see Honey docs
-    //importScripts("../lib/require.js");
-    var antlr4_require = require;
-    require = ace_require;
-
-    // Load ANTLR4 dependencies
+    // Code to invoke the lexer/parser
     var annotations = [];
-    try {
-        require = antlr4_require;
-        var antlr4 = require("antlr4/index");
-        var JavaLexer = require("./Java8Lexer").Java8Lexer;
-        var JavaParser = require("./Java8Parser").Java8Parser;
+    var chars = new antlr4.InputStream(inputText);
+    var lexer = new ResolveLexer.ResolveLexer(chars);
+    var tokens = new antlr4.CommonTokenStream(lexer);
+    var parser = new ResolveParser.ResolveParser(tokens);
 
-        // Code to invoke the lexer/parser
-        var chars = new antlr4.InputStream(inputText);
-        var lexer = new JavaLexer(chars);
-        var tokens = new antlr4.CommonTokenStream(lexer);
-        var parser = new JavaParser(tokens);
-    
-        parser.buildParseTrees = true;
-        parser.removeErrorListeners();
-        parser.addErrorListener(new AnnotatingErrorListener(annotations));
-        parser.compilationUnit();
-    }
-    finally {
-        require = ace_require;
-    }
+    parser.buildParseTrees = true;
+    parser.removeErrorListeners();
+    parser.addErrorListener(new AnnotatingErrorListener(annotations));
+    parser.module();
 
     return annotations;
-}*/
+}
 
 ////////////////////////////////////
 // Editor Alert-Related Functions //
@@ -143,15 +185,17 @@ $("#checkSyntax").click(function() {
     // Lock editor to stop user from making changes
     lock();
 
-    // TODO: Invoke Lexer/Parser for Language
-    var hasError = true;
-    var msg;
-    //var validate = parseGrammar(editorContent);
+    // Use the current contents of the editor to 
+    // invoke the lexer and parser to see if there any errors
+    var validate = parseGrammar(aceEditor.session.getValue());
 
     // Populate lexer/parser error messages (if any)
+    var msg;
+    var hasError = (validate.length > 0);
     if (hasError) {
-        // TODO: Display error message(s)
-        msg = "There are <num> errors. Please hover over each of the <icons> above for more information.";
+        msg = "There are " + validate.length + " error(s). Please hover over each of the <icons> above for more information.";
+
+        addSyntaxErrors(validate);
     }
     else {
         msg = "No syntax errors!";
@@ -167,11 +211,41 @@ $("#checkSyntax").click(function() {
 });
 
 /*
+ * Function for adding syntax errors to the gutter
+ */
+function addSyntaxErrors(errors) {
+    lineErrorMap = new Map();
+    for (var i = 0; i < errors.length; i++) {
+        var lineNum = Number(errors[i].row);
+
+        // Check to see if we need to add the icon.
+        if (lineErrorMap.get(lineNum) === undefined) {
+            // Add the icon to the gutter.
+            aceEditor.session.addGutterDecoration(lineNum, "ace_error");
+
+            // Create a new array for this line number
+            lineErrorMap.set(lineNum, []);
+        }
+
+        // Update our list of errors on that line number
+        var errorsAtLine = lineErrorMap.get(lineNum);
+        errorsAtLine.push(errors[i]);
+        lineErrorMap.set(lineNum, errorsAtLine);
+    }
+}
+
+/*
  * Function for resetting editor's code to the current cached content.
  */
 $("#resetCode").click(function() {
+    // Lock editor to stop user from making changes
+    lock();
+    
     // Put the cached content into the editor
     aceEditor.session.setValue(editorContent);
+
+    // Unlock editor for further user edits
+    unlock();
     
     return false;
 });
@@ -201,11 +275,24 @@ $("#fontDecrease").click(function() {
 });
 
 /*
+ * Function for reset the editor's font size.
+ */
+$("#resetFontSize").click(function() {
+    // Reset font size
+    $("#editor").css("font-size", fontSize);
+    
+    return false;
+});
+
+/*
  * Function for locking the check syntax and reset buttons.
  */
 function lock() {
     // Make sure we don't have any leftover alert box from the previous run.
     clearAlertBox();
+
+    // Clear any gutter icons
+    clearErrorGutterIcons();
 
     // Lock the editors
     aceEditor.setReadOnly(true);
