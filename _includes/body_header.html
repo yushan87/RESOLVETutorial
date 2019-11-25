@@ -8,6 +8,51 @@
 <script src="{{ "/javascript/tutorial/mode-resolve.js" | relative_url }}"></script>
 <script src="{{ "/javascript/tutorial/editorUpdate.js" | relative_url }}"></script>
 <script type="application/javascript">
+    var antlr4, AnnotatingErrorListener, ResolveLexer, ResolveParser;
+
+    // Fetch the ANTLR4 JavaScript Runtime
+    Tarp.require({main: "/javascript/lib/antlr4/index", paths: ["/javascript/lib/"]}).then( 
+        function (result) {
+            // Store the fetched object
+            antlr4 = result;
+            
+            // class for gathering errors and posting them to ACE editor
+            AnnotatingErrorListener = function(annotations) {
+                antlr4.error.ErrorListener.call(this);
+                this.annotations = annotations;
+                return this;
+            };
+
+            AnnotatingErrorListener.prototype = Object.create(antlr4.error.ErrorListener.prototype);
+            AnnotatingErrorListener.prototype.constructor = AnnotatingErrorListener;
+
+            AnnotatingErrorListener.prototype.syntaxError = function(recognizer, offendingSymbol, line, column, msg, e) {
+                this.annotations.push({
+                    row: line - 1,
+                    column: column,
+                    text: msg,
+                    type: "error"
+                });
+            };
+        }
+    );
+
+    // Fetch the RESOLVE Lexer
+    Tarp.require({main: "/javascript/resolve/ResolveLexer", paths: ["/javascript/lib/"]}).then(
+        function (result) {
+            // Store the fetched object
+            ResolveLexer = result;
+        }
+    );
+
+    // Fetch the RESOLVE Parser
+    Tarp.require({main: "/javascript/resolve/ResolveParser", paths: ["/javascript/lib/"]}).then(
+        function (result) {
+            // Store the fetched object
+            ResolveParser = result;
+        }
+    );
+
     $(document).ready(function () {
         createEditor();
     });
