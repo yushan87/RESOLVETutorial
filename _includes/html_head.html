@@ -21,4 +21,7 @@
 
     <!-- JavaScript -->
     <script src="https://kit.fontawesome.com/d50a2fb57f.js"></script>
+    {% if page.layout == "tutorial" %}
+    <script src="{{ "/javascript/lib/require.js" | relative_url }}" type="text/javascript"></script>
+    {% endif %}
 </head>
