@@ -1,4 +1,5 @@
-javascript/resolve/**
 javascript/antlr4/**
+javascript/resolve/**
+javascript/lib/require.js
 javascript/tutorial/editorUpdate.js
 javascript/tutorial/mode-resolve.js
