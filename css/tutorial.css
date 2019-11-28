@@ -50,8 +50,7 @@
     padding-left: 30px;
 }
 
-
 .tooltip > .tooltip-inner {
-    background-color: lightgray; 
-    color: #000; 
+    color: #000;
+    background-color: #d3d3d3;
 }

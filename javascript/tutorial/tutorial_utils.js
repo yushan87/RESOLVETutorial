@@ -1,4 +1,4 @@
-/* global ace */
+/* global ace antlr4 AnnotatingErrorListener ResolveLexer ResolveParser */
 
 //////////////////////
 // Global Variables //
@@ -19,7 +19,7 @@ var fontSize; // The current font size
  */
 function createEditor() {
     // RESOLVE mode
-    ResolveMode = ace.require("ace/mode/resolve").Mode;
+    var ResolveMode = ace.require("ace/mode/resolve").Mode;
 
     // Basic editor settings
     aceEditor = ace.edit("editor");
@@ -28,7 +28,7 @@ function createEditor() {
     aceEditor.setFontSize(fontSize);
 
     // Store the content for future use
-    editorContent = "Facility Hello_Resolve;\n\td\nend Hello_Resolve;"
+    editorContent = "Facility Hello_Resolve;\n\td\nend Hello_Resolve;";
     aceEditor.session.setValue(editorContent);
 
     // Set this to RESOLVE mode
@@ -88,8 +88,7 @@ function showGutterTooltip(e) {
                 title: errorObj[0].text
             });
             $(target).tooltip("show");
-        }
-        else {
+        } else {
             $(target).tooltip("dispose");
         }
     }
@@ -142,8 +141,7 @@ function createAlertBox(hasError, message) {
     // Change alert box color depending if it has error
     if (hasError) {
         alertDiv.setAttribute("class", "alert alert-danger alert-dismissible mb-0 fade show");
-    }
-    else {
+    } else {
         alertDiv.setAttribute("class", "alert alert-success alert-dismissible mb-0 fade show");
     }
 
@@ -181,29 +179,28 @@ function createAlertBox(hasError, message) {
 /*
  * Function for checking syntax on the current editor contents.
  */
-$("#checkSyntax").click(function() {
+$("#checkSyntax").click(function () {
     // Lock editor to stop user from making changes
     lock();
 
-    // Use the current contents of the editor to 
+    // Use the current contents of the editor to
     // invoke the lexer and parser to see if there any errors
     var validate = parseGrammar(aceEditor.session.getValue());
 
     // Populate lexer/parser error messages (if any)
     var msg;
-    var hasError = (validate.length > 0);
+    var hasError = validate.length > 0;
     if (hasError) {
         msg = "There are " + validate.length + " error(s). Please hover over each of the <icons> above for more information.";
 
         addSyntaxErrors(validate);
-    }
-    else {
+    } else {
         msg = "No syntax errors!";
     }
 
     // Create the appropriate alert box
     createAlertBox(hasError, msg);
-    
+
     // Unlock editor for further user edits
     unlock();
 
@@ -237,50 +234,50 @@ function addSyntaxErrors(errors) {
 /*
  * Function for resetting editor's code to the current cached content.
  */
-$("#resetCode").click(function() {
+$("#resetCode").click(function () {
     // Lock editor to stop user from making changes
     lock();
-    
+
     // Put the cached content into the editor
     aceEditor.session.setValue(editorContent);
 
     // Unlock editor for further user edits
     unlock();
-    
+
     return false;
 });
 
 /*
  * Function for increasing the editor's font size.
  */
-$("#fontIncrease").click(function() {
+$("#fontIncrease").click(function () {
     // Increase font size
     var currentFontSize = $("#editor").css("font-size");
     currentFontSize = parseFloat(currentFontSize) * 1.2;
     $("#editor").css("font-size", currentFontSize);
-    
+
     return false;
 });
 
 /*
  * Function for decreasing the editor's font size.
  */
-$("#fontDecrease").click(function() {
+$("#fontDecrease").click(function () {
     // Decrease font size
     var currentFontSize = $("#editor").css("font-size");
     currentFontSize = parseFloat(currentFontSize) / 1.2;
     $("#editor").css("font-size", currentFontSize);
-    
+
     return false;
 });
 
 /*
  * Function for reset the editor's font size.
  */
-$("#resetFontSize").click(function() {
+$("#resetFontSize").click(function () {
     // Reset font size
     $("#editor").css("font-size", fontSize);
-    
+
     return false;
 });
 
