@@ -30,7 +30,7 @@ module Jekyll
               :wrap         => false,
               :css_class    => "highlight"
           )
-          lexer = Rouge::Lexers::PlainText
+          lexer = Rouge::Lexers::ResolveLexer
           formatter.format(lexer.lex(code))
         end
   
