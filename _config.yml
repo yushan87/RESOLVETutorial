@@ -1,15 +1,12 @@
 # Jekyll configuration
 
-title: RESOLVE Tutorial
+title: RESOLVE Syntax Tutorial
 email: clemsonrsrg@gmail.com
 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: ClemsonRSRG
 github_label: git
-
-googleplus_username: "113522124528253946818"
-googleplus_label: google+
 
 # Build settings
 markdown: kramdown

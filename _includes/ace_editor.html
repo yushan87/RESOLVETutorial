@@ -1,22 +1,26 @@
 <div id="editorCol" class="d-flex flex-column h-100">
     <!-- Ace Editor -->
-    <div id="code" class="flex-grow-1 p-0">
-    </div>
+    <div id="editor" class="flex-grow-1 p-0"></div>
+    <!-- Check Syntax Results -->
+    <div id="compilerResult"></div>
     <!-- Editor Toolbar -->
     <div id="editorToolbar" class="p-2 bg-dark text-white">
         <div class="btn-toolbar font-weight-light" role="toolbar" aria-label="Editor Toolbar">
-            <div id="compilerButtons" class="mr-auto">
-                <button class="btn btn-success" type="button">Analyze</button>
+            <div id="fontButtons" class="d-inline-flex border border-white p-1">
+                <span class="d-none d-md-block my-auto mr-2">Font Size:</span>
+                <button id="fontIncrease" class="btn btn-sm btn-light mr-1" type="button"><i class="fas fa-plus fa-fw" aria-hidden="true" title="+"></i></button>
+                <button id="fontDecrease" class="btn btn-sm btn-light mr-1" type="button"><i class="fas fa-minus fa-fw" aria-hidden="true" title="-"></i></button>
+                <button id="resetFontSize" class="btn btn-sm btn-light" type="button">Default</button>
             </div>
-            <div id="fontButtons" class="d-inline-flex">
-                <span class="d-none d-md-block my-auto mr-2">Change Font Size:</span>
-                <button id="fontIncrease" class="btn btn-sm btn-primary mr-1" type="button"><i class="fas fa-plus fa-fw" aria-hidden="true" title="+"></i></button>
-                <button id="fontDecrease" class="btn btn-sm btn-primary" type="button"><i class="fas fa-minus fa-fw" aria-hidden="true" title="-"></i></button>
+            <div id="compilerButtons" class="ml-auto">
+                <button id="checkSyntax" class="btn btn-success" type="button">Check Syntax</button>
+                <button id="resetCode" class="btn btn-danger" type="button">Reset Code</button>
             </div>
         </div>
     </div>
 </div>
 
+<<<<<<< HEAD
 <!-- AceEditor Rendering JavaScript -->
 <script src="{{ "/javascript/ace/mode-resolve.js" | relative_url }}" type="text/javascript" charset="utf-8"></script>
 <script src="{{ "/javascript/ace/editorUpdate.js" | relative_url }}" type="text/javascript" charset="utf-8"></script>
@@ -58,3 +62,6 @@
         }
     }
 </script>
+=======
+<script src="{{ "/javascript/tutorial/tutorial_utils.js" | relative_url}}"></script>
+>>>>>>> master

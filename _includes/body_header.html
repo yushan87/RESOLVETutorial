@@ -1,10 +1,62 @@
 <!-- JavaScript Libraries -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 {% if page.layout == "tutorial" %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3/ace.js" integrity="sha256-NLPE2EQpOtxTAUB/jxjM97jsGmVQopiX8ceHySHhXs8=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3/mode-javascript.js" integrity="sha256-u2i2TNFMFXcJh2JplwAllr+acsiso7DnlKBmD29IssM=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.6/ace.js" integrity="sha256-CVkji/u32aj2TeC+D13f7scFSIfphw2pmu4LaKWMSY8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.6/theme-tomorrow.js" integrity="sha256-55Zsk7fyM+qujBBy8OGc5BtLJVQ+x1TcWtS7REs3fIg=" crossorigin="anonymous"></script>
+<script src="{{ "/javascript/tutorial/mode-resolve.js" | relative_url }}"></script>
+<script src="{{ "/javascript/tutorial/editorUpdate.js" | relative_url }}"></script>
+<script type="application/javascript">
+    var antlr4, AnnotatingErrorListener, ResolveLexer, ResolveParser;
+
+    // Fetch the ANTLR4 JavaScript Runtime
+    Tarp.require({main: "/javascript/lib/antlr4/index", paths: ["/javascript/lib/"]}).then( 
+        function (result) {
+            // Store the fetched object
+            antlr4 = result;
+            
+            // class for gathering errors and posting them to ACE editor
+            AnnotatingErrorListener = function(annotations) {
+                antlr4.error.ErrorListener.call(this);
+                this.annotations = annotations;
+                return this;
+            };
+
+            AnnotatingErrorListener.prototype = Object.create(antlr4.error.ErrorListener.prototype);
+            AnnotatingErrorListener.prototype.constructor = AnnotatingErrorListener;
+
+            AnnotatingErrorListener.prototype.syntaxError = function(recognizer, offendingSymbol, line, column, msg, e) {
+                this.annotations.push({
+                    row: line - 1,
+                    column: column,
+                    text: msg,
+                    type: "error"
+                });
+            };
+        }
+    );
+
+    // Fetch the RESOLVE Lexer
+    Tarp.require({main: "/javascript/resolve/ResolveLexer", paths: ["/javascript/lib/"]}).then(
+        function (result) {
+            // Store the fetched object
+            ResolveLexer = result;
+        }
+    );
+
+    // Fetch the RESOLVE Parser
+    Tarp.require({main: "/javascript/resolve/ResolveParser", paths: ["/javascript/lib/"]}).then(
+        function (result) {
+            // Store the fetched object
+            ResolveParser = result;
+        }
+    );
+
+    $(document).ready(function () {
+        createEditor();
+    });
+</script>
 {% endif %}
 
 <!-- Page Header -->
@@ -20,7 +72,7 @@
                 <a class="nav-link text-dark" href="https://www.cs.clemson.edu/resolve/" target="_blank"><i class="fas fa-home fa-fw d-none d-sm-inline-flex" aria-hidden="true"></i><span class="d-none d-sm-inline-flex">&nbsp; </span>RSRG Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" href="https://resolve.cs.clemson.edu/beginToReason/" target="_blank"><i class="fas fa-external-link-alt fa-fw d-none d-sm-inline-flex" aria-hidden="true"></i><span class="d-none d-sm-inline-flex">&nbsp; </span>BeginToReason</a>
+                <a class="nav-link text-dark" href="https://begintoreason.cs.clemson.edu/" target="_blank"><i class="fas fa-external-link-alt fa-fw d-none d-sm-inline-flex" aria-hidden="true"></i><span class="d-none d-sm-inline-flex">&nbsp; </span>BeginToReason</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-dark" href="https://resolve.cs.clemson.edu/" target="_blank"><i class="fas fa-external-link-alt fa-fw d-none d-sm-inline-flex" aria-hidden="true"></i><span class="d-none d-sm-inline-flex">&nbsp; </span>WebIDE</a>

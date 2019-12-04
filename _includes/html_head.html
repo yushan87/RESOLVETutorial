@@ -10,15 +10,19 @@
     <link rel="icon" type="image/png" href="{{ "/images/logo2.png" | relative_url }}">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" 
-        integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" 
-        integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="{{ "/css/main.css" | relative_url }}" rel="stylesheet">
     {% if page.layout == "tutorial" %}
     <link href="{{ "/css/tutorial.css" | relative_url }}" rel="stylesheet">
     <link href="{{ "/css/pygments/default.css" | relative_url }}" rel="stylesheet">
     {% else %}
     <link href="{{ "/css/page.css" | relative_url }}" rel="stylesheet">
+    {% endif %}
+
+    <!-- JavaScript -->
+    <script src="https://kit.fontawesome.com/d50a2fb57f.js"></script>
+    {% if page.layout == "tutorial" %}
+    <script src="{{ "/javascript/lib/require.js" | relative_url }}" type="text/javascript"></script>
     {% endif %}
 </head>
