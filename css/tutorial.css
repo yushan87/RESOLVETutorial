@@ -43,3 +43,7 @@
 #tutorialContent a {
     text-decoration: none;
 }
+
+#tutorialContent .inlineCode {
+    font-family: 'Courier New', Courier, monospace;
+}
