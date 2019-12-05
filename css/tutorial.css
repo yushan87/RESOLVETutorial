@@ -44,6 +44,10 @@
     text-decoration: none;
 }
 
+#tutorialContent .inlineCode {
+    font-family: "Courier New", Courier, monospace;
+}
+
 /* ACE Editor-Related CSS */
 .ace_folding-enabled > .ace_gutter-cell {
     padding-right: 10px;
