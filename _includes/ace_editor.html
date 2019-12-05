@@ -20,48 +20,4 @@
     </div>
 </div>
 
-<<<<<<< HEAD
-<!-- AceEditor Rendering JavaScript -->
-<script src="{{ "/javascript/ace/mode-resolve.js" | relative_url }}" type="text/javascript" charset="utf-8"></script>
-<script src="{{ "/javascript/ace/editorUpdate.js" | relative_url }}" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript">
-    var editor;
-    $( window ).on( "load", function() {
-        var ResolveMode = ace.require("ace/mode/resolve").Mode;
-
-        editor = ace.edit("code");
-        editor.setTheme("ace/theme/tomorrow_night");
-        editor.session.setMode(new ResolveMode());
-        editor.session.setValue("");
-        editor.setFontSize(16);
-    });
-    
-    $( "#fontIncrease" ).click(function() {
-        // Increase font size
-        var currentFontSize = $( "#code" ).css("font-size");
-        currentFontSize = parseFloat(currentFontSize) * 1.2;
-        $( "#code" ).css("font-size", currentFontSize);
-        
-        return false;
-    });
-    
-    $( "#fontDecrease" ).click(function() {
-        // Decrease font size
-        var currentFontSize = $( "#code" ).css("font-size");
-        currentFontSize = parseFloat(currentFontSize) / 1.2;
-        $( "#code" ).css("font-size", currentFontSize);
-        
-        return false;
-    });
-
-    function load_lesson(code) {
-        if (typeof editor !== 'undefined') {
-            editor.session.setValue(code);
-        } else {
-            console.log("AceEditor not initialized!");
-        }
-    }
-</script>
-=======
 <script src="{{ "/javascript/tutorial/tutorial_utils.js" | relative_url}}"></script>
->>>>>>> master
