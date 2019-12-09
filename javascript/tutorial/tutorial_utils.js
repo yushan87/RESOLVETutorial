@@ -1,4 +1,4 @@
-/* global ace antlr4 AnnotatingErrorListener ResolveLexer ResolveParser */
+/* global ace antlr4 AnnotatingErrorListener PredictionMode ResolveLexer ResolveParser */
 
 //////////////////////
 // Global Variables //
@@ -45,7 +45,7 @@ function createEditor() {
  * Function for loading a code snippet to AceEditor.
  */
 function loadLesson(code) {
-    if (typeof editor !== "undefined") {
+    if (typeof aceEditor !== "undefined") {
         // No need to keep any of the errors if we are loading
         // a new code snippet.
         clearErrorGutterIcons();
@@ -54,8 +54,6 @@ function loadLesson(code) {
         // Store the content for future use
         editorContent = code;
         aceEditor.session.setValue(editorContent);
-    } else {
-        console.log("AceEditor not initialized!");
     }
 }
 
