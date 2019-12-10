@@ -59,7 +59,7 @@ module Jekyll
         blockID = @block_id
 
         "<figure id=\"#{@block_id}\" class=\"highlight\"><pre><code class=\"language-resolve\" data-lang=\"#resolve\">"\
-        "#{code.chomp}</code></pre></figure><button type=\"button\" class=\"btn btn-primary\" onclick=\"load_lesson($('\##{@block_id}').text());\">Try it now!</button>"
+        "#{code.chomp}</code></pre></figure><button type=\"button\" class=\"btn btn-primary\" onclick=\"loadLesson($('\##{@block_id}').text());\">Try it now!</button>"
       end
     end
   end

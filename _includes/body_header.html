@@ -8,7 +8,7 @@
 <script src="{{ "/javascript/tutorial/mode-resolve.js" | relative_url }}"></script>
 <script src="{{ "/javascript/tutorial/editorUpdate.js" | relative_url }}"></script>
 <script type="application/javascript">
-    var antlr4, AnnotatingErrorListener, ResolveLexer, ResolveParser;
+    var antlr4, AnnotatingErrorListener, PredictionMode, ResolveLexer, ResolveParser;
 
     // Fetch the ANTLR4 JavaScript Runtime
     Tarp.require({main: "{{ "/javascript/lib/antlr4/index" | relative_url }}", paths: ["{{ "/javascript/lib/" | relative_url }}"]}).then( 
@@ -50,6 +50,14 @@
         function (result) {
             // Store the fetched object
             ResolveParser = result;
+        }
+    );
+    
+    // Fetch the Prediction Mode (SLL, LL, LL*)
+    Tarp.require({main: "{{ "/javascript/lib/antlr4/atn/PredictionMode" | relative_url }}", paths: ["{{ "/javascript/lib/" | relative_url }}"]}).then(
+        function (result) {
+            // Store the fetched object
+            PredictionMode = result.PredictionMode;
         }
     );
 

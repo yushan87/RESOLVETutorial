@@ -1,4 +1,4 @@
-/* global ace antlr4 AnnotatingErrorListener ResolveLexer ResolveParser */
+/* global ace antlr4 AnnotatingErrorListener PredictionMode ResolveLexer ResolveParser */
 
 //////////////////////
 // Global Variables //
@@ -28,7 +28,7 @@ function createEditor() {
     aceEditor.setFontSize(fontSize);
 
     // Store the content for future use
-    editorContent = "Facility Hello_Resolve;\n\td\nend Hello_Resolve;";
+    editorContent = "-- Try adding some RESOLVE code here!";
     aceEditor.session.setValue(editorContent);
 
     // Set this to RESOLVE mode
@@ -39,6 +39,22 @@ function createEditor() {
 
     // Add tooltip that indicates you can click on VC icon.
     aceEditor.on("guttermousemove", showGutterTooltip);
+}
+
+/*
+ * Function for loading a code snippet to AceEditor.
+ */
+function loadLesson(code) {
+    if (typeof aceEditor !== "undefined") {
+        // No need to keep any of the errors if we are loading
+        // a new code snippet.
+        clearErrorGutterIcons();
+        clearAlertBox();
+
+        // Store the content for future use
+        editorContent = code;
+        aceEditor.session.setValue(editorContent);
+    }
 }
 
 ////////////////////////////////////
@@ -109,7 +125,7 @@ function parseGrammar(inputText) {
     var tokens = new antlr4.CommonTokenStream(lexer);
     var parser = new ResolveParser.ResolveParser(tokens);
 
-    parser.buildParseTrees = true;
+    parser._interp.predictionMode = PredictionMode.SLL;
     parser.removeErrorListeners();
     parser.addErrorListener(new AnnotatingErrorListener(annotations));
     parser.module();
