@@ -24,6 +24,7 @@ function createEditor() {
     // Basic editor settings
     aceEditor = ace.edit("editor");
     aceEditor.setTheme("ace/theme/tomorrow_night");
+    //aceEditor.setTheme("ace/theme/chaos");
     fontSize = 16;
     aceEditor.setFontSize(fontSize);
 
