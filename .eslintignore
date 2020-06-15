@@ -1,6 +1,10 @@
-css/pygments/default.css
+# ANTLR 4 Related Files
 javascript/antlr4/**
-javascript/resolve/**
 javascript/lib/require.js
+
+# RESOLVE Grammar
+javascript/resolve/**
+
+# ACE Editor Related Files
 javascript/tutorial/editorUpdate.js
 javascript/tutorial/mode-resolve.js
