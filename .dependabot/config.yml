@@ -2,7 +2,7 @@
 version: 1
 update_configs:
   # Settings for Ruby
-  - package_manager: "bundler"
+  - package_manager: "ruby:bundler"
     directory: "/"
     update_schedule: "live"
     # Apply default reviewer and label to created pull requests
