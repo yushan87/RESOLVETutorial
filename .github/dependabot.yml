@@ -5,13 +5,9 @@ updates:
   schedule:
     interval: daily
     time: "10:00"
+  target-branch: "master"
   open-pull-requests-limit: 10
   reviewers:
   - yushan87
   labels:
   - dependencies
-  ignore:
-  - dependency-name: html-proofer
-    versions:
-    - 3.18.6
-    - 3.19.0
