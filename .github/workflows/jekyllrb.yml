@@ -17,7 +17,7 @@ jobs:
     runs-on: [ ubuntu-latest ]
     strategy:
       matrix:
-        ruby-version: [ '3.1' ]
+        ruby-version: [ '3.1', '3.2' ]
 
     steps:
     - uses: actions/checkout@v3
@@ -28,5 +28,9 @@ jobs:
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Build
       run: bundle exec jekyll build
-    - name: HTML Proofer
-      run: bundle exec htmlproofer ./_site --disable-external --assume-extension
+    - name: HTML Validator and Proofer
+      uses: anishathalye/proof-html@v2
+      with:
+        directory: ./_site
+        enforce_https: false
+        check_favicon: false
