@@ -2,7 +2,7 @@
 # and run the HTML Proofer.
 # For more information see: https://github.com/ruby/setup-ruby
 
-name: Ruby + Jekyll RESOLVETutorial
+name: RESOLVETutorial (Ruby + Jekyll)
 
 on:
   push:
