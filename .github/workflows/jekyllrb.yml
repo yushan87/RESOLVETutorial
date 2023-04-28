@@ -34,3 +34,4 @@ jobs:
         directory: ./_site
         enforce_https: false
         check_favicon: false
+        max_concurrency: 5
