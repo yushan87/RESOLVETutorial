@@ -34,5 +34,3 @@ jobs:
         directory: ./_site
         enforce_https: false
         check_favicon: false
-        ignore_url: |
-            https://computing.clemson.edu/resolve
