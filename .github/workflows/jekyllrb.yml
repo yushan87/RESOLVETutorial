@@ -34,3 +34,5 @@ jobs:
         directory: ./_site
         enforce_https: false
         check_favicon: false
+        ignore_url: |
+          https://begintoreason.cs.clemson.edu
