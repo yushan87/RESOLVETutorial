@@ -35,4 +35,4 @@ jobs:
         enforce_https: false
         check_favicon: false
         ignore_url: |
-          https://begintoreason.cs.clemson.edu
+          https://begintoreason.cs.clemson.edu/
